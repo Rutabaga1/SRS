@@ -1,6 +1,6 @@
 package service;
 
-import java.util.HashMap;
+
 import java.util.List;
 
 import SRSDAO.*;
@@ -22,9 +22,14 @@ public class WebService {
 	private StudentDAO studentDAO=DataFactory.createStudentDAO();
 	private TranscriptDAO transcriptDAO=DataFactory.createTranscriptDAO();
 
-	public Person signIn(Person admin) {
+	public Person signInProfessor(Person admin) {
 		// TODO Auto-generated method stub
-		return professorDAO.signIn(admin);
+		return professorDAO.signInProfessor(admin);
+	}
+	
+	public Person signInStudent(Person admin) {
+		// TODO Auto-generated method stub
+		return studentDAO.signInStudent(admin);
 	}
 
 	public ScheduleOfClasses getScheduleOfClasses(String semester) {
@@ -32,14 +37,14 @@ public class WebService {
 		return sectionDAO.getScheduleofClasses(semester);
 	}
 
-	public Transcript getTranscript(String ssn, HashMap<String, Section> hashMap) {
+	public List<String> getTranscript(String ssn, ScheduleOfClasses scs) {
 		// TODO Auto-generated method stub
-		return transcriptDAO.getTranscript(ssn,hashMap);
+		return transcriptDAO.getTranscript(ssn,scs);
 	}
 
-	public void deleteTranscript(String[] drops) {
+	public void deleteTranscript(String[] drops, String ssn) {
 		// TODO Auto-generated method stub
-		transcriptDAO.deleteTranscript(drops);
+		transcriptDAO.deleteTranscript(drops,ssn);
 	}
 
 	public ScheduleOfClasses getScheduleOfClasses(String[] selects) {
@@ -72,9 +77,9 @@ public class WebService {
 		professorDAO.addProfessor(add1);
 	}
 
-	public void addCourse(Course add1) {
+	public void addCourse(Course add1, String addPres) {
 		// TODO Auto-generated method stub
-		courseDAO.addCourse(add1);
+		courseDAO.addCourse(add1,addPres);
 	}
 
 	public void deleteTeachers(String[] deletes) {
@@ -87,24 +92,24 @@ public class WebService {
 		courseDAO.deleteCourses(deletes);
 	}
 
-	public List<Section> getSections(String ssn) {
+	public ScheduleOfClasses getProfessorScheduleOfClasses(String ssn) {
 		// TODO Auto-generated method stub
-		return sectionDAO.getSections(ssn);
+		return sectionDAO.getProfessorScheduleOfClasses(ssn);
 	}
 
-	public Transcript getTranscript(List<Section> st) {
+	public String getStudentSsnfromTranscript(Section s) {
 		// TODO Auto-generated method stub
-		return transcriptDAO.getTranscript(st);
+		return transcriptDAO.getStudentSsnfromTranscript(s);
 	}
 
-	public void updateTeachers(String[] changes, String[] changeNos, String[] changeNames, String[] changeDepartments) {
+	public void updateTeachers(Professor ud) {
 		// TODO Auto-generated method stub
-		professorDAO.updateTeachers(changes,changeNos,changeNames,changeDepartments);
+		professorDAO.updateTeachers(ud);
 	}
 
-	public void updateCourses(String[] changes, String[] changeNos, String[] changeNames, String[] changeCredits) {
+	public void updateCourses(Course ud, String changeCredits) {
 		// TODO Auto-generated method stub
-		courseDAO.updateCourses(changes,changeNos,changeNames,changeCredits);
+		courseDAO.updateCourses(ud,changeCredits);
 	}
 	
     

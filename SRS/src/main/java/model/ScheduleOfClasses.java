@@ -6,7 +6,7 @@ package model;
 // A MODEL class.
 
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 public class ScheduleOfClasses {
@@ -25,7 +25,15 @@ public class ScheduleOfClasses {
 	//----------------
 	// Constructor(s).
 	//----------------
+	
+	public ScheduleOfClasses() {
+		
+		
+		// Note that we're instantiating empty support Collection(s).
 
+		sectionsOffered = new HashMap<String, Section>();
+	}
+	
 	public ScheduleOfClasses(String semester) {
 		setSemester(semester);
 		

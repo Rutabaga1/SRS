@@ -1,19 +1,20 @@
 package SRSDAO;
 
-import java.util.HashMap;
+
 import java.util.List;
 
+import model.ScheduleOfClasses;
 import model.Section;
 import model.Transcript;
 
 public interface TranscriptDAO {
 
-	Transcript getTranscript(List<Section> st);
+	String getStudentSsnfromTranscript(Section s);
 
 	Transcript getTranscript(String ssn);
 
-	void deleteTranscript(String[] drops);
+	void deleteTranscript(String[] drops, String ssn);
 
-	Transcript getTranscript(String ssn, HashMap<String, Section> hashMap);
+	List<String> getTranscript(String ssn, ScheduleOfClasses scs);
 
 }

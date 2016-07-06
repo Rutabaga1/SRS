@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ScheduleOfClasses;
 import model.Section;
-import model.Transcript;
+import model.Student;
+
 import service.WebService;
 
 
@@ -42,14 +45,24 @@ public class StudentofSection extends HttpServlet {
 		
 		String page="false.jsp";
 		WebService service = new WebService();
-		String ssn= (String) request.getSession().getAttribute("ssn");
-		List<Section> st=service.getSections(ssn);
-		Transcript tst=service.getTranscript(st);
+		List<String> tstSsn=new ArrayList<String>();
+		List<Student> enolledStudent=new ArrayList<Student>();
 		
-		if(tst.hashCode()==0){
+		String ssn= (String) request.getSession().getAttribute("ssn");
+		ScheduleOfClasses professorClass=service.getProfessorScheduleOfClasses(ssn);
+		for (Section s : professorClass.getSectionsOffered().values()) {
+			tstSsn.add(service.getStudentSsnfromTranscript(s));
+		}
+		
+		for(int i=0;i<tstSsn.size();i++){
+			enolledStudent.add(service.getStudent(tstSsn.get(i)));
+		}
+		
+		if(enolledStudent.size()==0){
 			request.getRequestDispatcher(page).forward(request, response);
 		}else{
-			request.setAttribute("result",tst.getTranscriptEntries());
+			request.setAttribute("resultStudent",enolledStudent);//зЂвт
+			request.setAttribute("resultSectons",professorClass.getSectionsOffered());
 			request.getRequestDispatcher("studentChoose.jsp").forward(request, response);
 		}
 		

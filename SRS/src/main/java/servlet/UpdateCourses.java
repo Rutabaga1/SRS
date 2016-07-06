@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Course;
 import service.WebService;
 
 
@@ -38,14 +39,20 @@ public class UpdateCourses extends HttpServlet {
 		String[] changeNos=request.getParameterValues("changeNo");
 		String[] changeNames=request.getParameterValues("changeName");
 		String[] changeCredits=request.getParameterValues("changeCredits");
+		String[] changePres=request.getParameterValues("changePre");
+		Course updateC=null;
 		
 		WebService service = new WebService();
+		for(int i=0;i<changeNos.length;i++){
+			for(int j=0;j<changes.length;j++){
+				if(changes[j].equals(changeNos[i]))
+					updateC=new Course(changeNos[i],changeNames[i],Double.valueOf(changeCredits[i]));
+					service.updateCourses(updateC,changePres[i]);
 		
-		service.updateCourses(changes,changeNos,changeNames,changeCredits);
-		
-		
+			}
+		}
 		//response.sendRedirect("index.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("course.jsp").forward(request, response);
 	}
 
 	/**

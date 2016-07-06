@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>首页</title>
+<title>教师</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css" >
 <link rel="stylesheet" type="text/css" href="css/style.css" >
 <link rel="stylesheet" type="text/css" href="css/superfish.css" >
@@ -32,17 +32,17 @@
 		 		<li class=""> <a href="enrollCourse.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				    </li>
-			 	<li class=""> <a href="Transcript.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			 	<li class=""> <a href="SearchTranscript">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				</li>
-		 		<li class=""> <a href="course.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		 		<li class=""> <a href="SearchCourses">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 			    </li>
-                <li class=""><a href="teachers.jsp" class="active">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <li class=""><a href="SearchTeachers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                		 
 	            </li>
 
-	            <li class=""><a href="studentChoose.jsp">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
+	            <li class=""><a href="StudentofSection">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
 	   				
 	            </li>
 	            
@@ -69,21 +69,35 @@
 
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
-	<p>教师</p>
+	<p><font size="3" color="brown"><strong>添加教师</strong></font></p><br><br>
+	 <form action="AddTeacher">
 		<table>
-			<tr><td colspan="3">添加教师</td></tr>
-			<tr height="200px">
+			
+			<tr >
 		   				<td >教师编号：<input type="text" name="addNo" ></td>
 		   				 <td >教师名称：<input type="text" name="addName" ></td> 
 		   				<td >教师部门：<input type="text" name="addDepartment" ></td>
 		   		</tr>
 		   		
 		</table>
+		
+		<p align="center"><input class="submit" type="submit" value="招聘" ></p>
+		</form>
+		<br><br>
+		<p><font size="3" color="brown"><strong>修改教师</strong></font></p><br><br>
+		<form action="UpdateTeachers">
 	  	<table>
-	  		<tr><td colspan="4">修改教师</td></tr>
+	  		
+	  		<tr>
+	  					<td>&nbsp;</td>
+		   				<td >教师编号</td>
+		   				 <td >教师名称</td> 
+		   				<td >教师部门</td>
+		   				
+		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
-		   			<tr height="200px">
+		   			<tr >
 		   				<td><input type="checkbox" name="change" value='${oneResult.ssn}'></td>
 		   				<td ><input type="text" name="changeNo" value='${oneResult.ssn}'></td>
 		   				 <td ><input type="text" name="changeName" value='${oneResult.name}'></td> 
@@ -92,18 +106,34 @@
 		   		</c:forEach>
 		   </table>
 		   
+		   <p align="center"><input class="submit" type="submit" value="修改" ></p>
+		   </form>
+		   <br><br>
+		   <p><font size="3" color="brown"><strong>删除教师</strong></font></p><br><br>
+		   <form action="DeleteTeachers">
 		   <table>
-	  		<tr><td colspan="4">删除教师</td></tr>
+	  		
+	  		<tr>
+	  					<td>&nbsp;</td>
+		   				<td >教师编号&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		   				 <td >教师名称</td> 
+		   				<td >教师部门</td>
+		   				
+		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
-		   			<tr height="200px">
+		   			<tr >
 		   				<td><input type="checkbox" name="delete" value='${oneResult.ssn}'></td>
-		   				<td >${oneResult.ssn}</td>
-		   				 <td >${oneResult.name}</td> 
-		   				<td >${oneResult.department}</td>
+		   				<td >${oneResult.ssn}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		   				 <td >${oneResult.name}&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+		   				<td >${oneResult.department}&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   			</tr>
 		   		</c:forEach>
 		   </table>
+		   
+		   <p align="center"><input class="submit" type="submit" value="解雇" ></p>
+		   </form>
+		   
 	</div>
 	
 </div><!--   width="120px"  #wrapper -->

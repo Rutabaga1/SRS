@@ -33,7 +33,8 @@ public class Course {
 		offeredAsSection = new ArrayList<Section>();
 		prerequisites = new ArrayList<Course>();
 	}
-
+	
+	
 	//------------------
 	// Accessor methods.
 	//------------------
@@ -106,7 +107,7 @@ public class Course {
 		return prerequisites;
 	}
 
-	public Section scheduleSection(char day, String time, String room,
+	public Section scheduleSection(String day, String time, String room,
 				       int capacity) {
 		// Create a new Section (note the creative way in
 		// which we are assigning a section number) ...

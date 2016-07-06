@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Course;
+
 import model.Professor;
-import model.Transcript;
+
 import service.WebService;
 
 

@@ -41,7 +41,7 @@
 
 	<div id="separator">
 		<div class="center-block">
-			<h3>管理员</h3>
+			<h3>您好</h3>
 			<span>: 请登录</span>
 		</div>
 	</div>

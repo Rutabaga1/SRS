@@ -20,6 +20,11 @@ public class Transcript {
 	// Constructor(s).
 	//----------------
 
+	public Transcript() {
+		
+		transcriptEntries = new ArrayList<TranscriptEntry>();
+	}
+	
 	public Transcript(Student s) {
 		setStudentOwner(s);
 

@@ -6,7 +6,7 @@ package model;
 // A MODEL class.
 
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 public class Section {
@@ -15,14 +15,14 @@ public class Section {
 	//------------
 
 	private int sectionNo;
-	private char dayOfWeek;
+	private String dayOfWeek;
 	private String timeOfDay;
 	private String room;
 	private int seatingCapacity;
 	private Course representedCourse;
 	private ScheduleOfClasses offeredIn;
 	private Professor instructor;
-
+	private String semester;
 	// The enrolledStudents HashMap stores Student object references,
 	// using each Student's ssn as a String key.
 
@@ -37,8 +37,12 @@ public class Section {
 	//----------------
 	// Constructor(s).
 	//----------------
+	
+	public Section() {
+		
+	}
 
-	public Section(int sNo, char day, String time, Course course,
+	public Section(int sNo, String day, String time, Course course,
 		       String room, int capacity) {
 		setSectionNo(sNo);
 		setDayOfWeek(day);
@@ -69,11 +73,11 @@ public class Section {
 		return sectionNo;
 	}
 	
-	public void setDayOfWeek(char day) {
+	public void setDayOfWeek(String day) {
 		dayOfWeek = day;
 	}
 	
-	public char getDayOfWeek() {
+	public String getDayOfWeek() {
 		return dayOfWeek;
 	}
 		
@@ -329,5 +333,13 @@ public class Section {
 	public boolean isSectionOf(Course c) {
 		if (c == representedCourse) return true;
 		else return false;
+	}
+
+	public String getSemester() {
+		return semester;
+	}
+
+	public void setSemester(String semester) {
+		this.semester = semester;
 	}
 }

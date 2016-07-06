@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Course;
-import model.Transcript;
+
 import service.WebService;
 
 

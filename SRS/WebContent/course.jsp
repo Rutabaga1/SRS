@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>首页</title>
+<title>课程</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css" >
 <link rel="stylesheet" type="text/css" href="css/style.css" >
 <link rel="stylesheet" type="text/css" href="css/superfish.css" >
@@ -32,17 +32,17 @@
 		 		<li class=""> <a href="enrollCourse.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				    </li>
-			 	<li class=""> <a href="Transcript.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			 	<li class=""> <a href="SearchTranscript">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				</li>
-		 		<li class=""> <a href="course.jsp" class="active">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		 		<li class=""> <a href="SearchCourses">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 			    </li>
-                <li class=""><a href="teachers.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <li class=""><a href="SearchTeachers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                		 
 	            </li>
 
-	            <li class=""><a href="studentChoose.jsp">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
+	            <li class=""><a href="StudentofSection">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
 	   				
 	            </li>
 	            
@@ -69,10 +69,12 @@
 
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
-	<p>课程</p>
+	
+	<p><font size="3" color="brown"><strong>添加课程</strong></font></p><br><br>
+	  <form action="AddCourse">
 		<table>
-			<tr><td colspan="3">添加课程</td></tr>
-			<tr height="200px">
+			
+			<tr>
 		   				<td >课程编号：<input type="text" name="addNo" ></td>
 		   				 <td >课程名称：<input type="text" name="addName" ></td> 
 		   				<td >课程学分：<input type="text" name="addCredits" ></td>
@@ -81,24 +83,51 @@
 		   				<td colspan="3">课程先修课（先修课课程编号用逗号分隔）：<input type="text" name="addPre" ></td>
 		   			</tr>
 		</table>
+		
+		<p align="center"><input class="submit" type="submit" value="添加" ></p>
+		</form>
+		<br><br>
+		<p><font size="3" color="brown"><strong>修改课程</strong></font></p><br><br>
+		<form action="UpdateCourses">
 	  	<table>
-	  		<tr><td colspan="4">修改课程</td></tr>
+	  		
+	  		<tr>
+	  					<td>&nbsp;</td>
+		   				<td >课程编号</td>
+		   				 <td >课程名称</td> 
+		   				<td >课程学分</td>
+		   				<td >课程先修课</td>
+		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
-		   			<tr height="200px">
+		   			<tr >
 		   				<td><input type="checkbox" name="change" value='${oneResult.courseNo}'></td>
-		   				<td ><input type="text" name="changeNo" value='${oneResult.courseNo}'></td>
+		   				<td ><input type="text" name="changeNo" value='${oneResult.courseNo}' readonly="readonly"></td>
 		   				 <td ><input type="text" name="changeName" value='${oneResult.courseName}'></td> 
 		   				<td ><input type="text" name="changeCredits" value='${oneResult.credits}'></td>
+		   				<td ><input type="text" name="changePre" value='${oneResult.preCourse}'></td>
 		   			</tr>
 		   		</c:forEach>
 		   </table>
 		   
+		   <p align="center"><input class="submit" type="submit" value="修改" ></p>
+		   </form>
+		   <br><br>
+		   <p><font size="3" color="brown"><strong>删除课程</strong></font></p><br><br>
+		   
+		   <form action="DeleteCourses">
 		   <table>
-	  		<tr><td colspan="4">删除课程</td></tr>
+	  			
+	  			<tr>
+	  					<td>&nbsp;</td>
+		   				<td >课程编号</td>
+		   				 <td >课程名称</td> 
+		   				<td >课程学分</td>
+		   				
+		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
-		   			<tr height="200px">
+		   			<tr >
 		   				<td><input type="checkbox" name="delete" value='${oneResult.courseNo}'></td>
 		   				<td >${oneResult.courseNo}</td>
 		   				 <td >${oneResult.courseName}</td> 
@@ -106,6 +135,9 @@
 		   			</tr>
 		   		</c:forEach>
 		   </table>
+		   
+		   <p align="center"><input class="submit" type="submit" value="删除" ></p>
+		   </form>
 	</div>
 	
 </div><!--   width="120px"  #wrapper -->

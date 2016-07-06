@@ -2,15 +2,15 @@ package servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+
 
 import model.Course;
-import model.Professor;
+
 import service.WebService;
 
 /**
@@ -40,11 +40,14 @@ public class AddCourse extends HttpServlet {
 		String name=request.getParameter("addName");
 		String addNo=request.getParameter("addNo");
 		String addCredits=request.getParameter("addCredits");
+		String addPres=request.getParameter("addaddPre");
+		//String[] pres=addPres.split(",");
 		WebService service = new WebService();
 		Course add1=new Course(name,addNo,Double.valueOf(addCredits));
-		service.addCourse(add1);
 		
-		String page="false.jsp";
+		service.addCourse(add1,addPres);
+		
+		String page="course.jsp";
 		
 		request.getRequestDispatcher(page).forward(request, response);
 	}

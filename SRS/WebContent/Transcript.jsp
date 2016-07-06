@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>首页</title>
+<title>成绩</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css" >
 <link rel="stylesheet" type="text/css" href="css/style.css" >
 <link rel="stylesheet" type="text/css" href="css/superfish.css" >
@@ -32,17 +32,17 @@
 		 		<li class=""> <a href="enrollCourse.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				    </li>
-			 	<li class=""> <a href="Transcript.jsp" class="active">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			 	<li class=""> <a href="SearchTranscript">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				</li>
-		 		<li class=""> <a href="course.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		 		<li class=""> <a href="SearchCourses">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 			    </li>
-                <li class=""><a href="teachers.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <li class=""><a href="SearchTeachers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                		 
 	            </li>
 
-	            <li class=""><a href="studentChoose.jsp">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
+	            <li class=""><a href="StudentofSection">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
 	   				
 	            </li>
 	            
@@ -69,12 +69,20 @@
 
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
-	<p>成绩</p>
+	
+	<p><font size="3" color="brown"><strong>成绩</strong></font></p>
+	<br><br>
 	  	<table>
+	  	<tr>
+	  					
+		   				 <td >课程名称</td> 
+		   				<td >成绩</td>
+		   				
+		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
 		   			<tr height="200px">
-		   				 <td >${oneResult.courseName}</td> 
+		   				 <td >${oneResult.courseName}&nbsp;&nbsp;&nbsp;&nbsp;</td> 
 		   				<td >${oneResult.grade}</td>
 		   			</tr>
 		   		</c:forEach>

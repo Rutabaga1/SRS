@@ -2,7 +2,7 @@ package servlet;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class enrollCourseServlet extends HttpServlet {
 		String[] selects=request.getParameterValues("select");
 		String[] drops=request.getParameterValues("drop");
 		
-		service.deleteTranscript(drops);//อหัก
+		service.deleteTranscript(drops,ssn);//อหัก
 		
 		ScheduleOfClasses scs=service.getScheduleOfClasses(selects);
 		for(String key : scs.getSectionsOffered().keySet()){

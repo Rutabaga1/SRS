@@ -116,19 +116,19 @@ public class SRS {
 		// scheduleSection method of Course (which internally
 		// invokes the Section constructor). 
 
-		sec1 = c1.scheduleSection('M', "8:10 - 10:00 PM", "GOVT101", 30);
+		sec1 = c1.scheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
 
-		sec2 = c1.scheduleSection('W', "6:10 - 8:00 PM", "GOVT202", 30);
+		sec2 = c1.scheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
 
-		sec3 = c2.scheduleSection('R', "4:10 - 6:00 PM", "GOVT105", 25);
+		sec3 = c2.scheduleSection("R", "4:10 - 6:00 PM", "GOVT105", 25);
 
-		sec4 = c2.scheduleSection('T', "6:10 - 8:00 PM", "SCI330", 25);
+		sec4 = c2.scheduleSection("T", "6:10 - 8:00 PM", "SCI330", 25);
 
-		sec5 = c3.scheduleSection('M', "6:10 - 8:00 PM", "GOVT101", 20);
+		sec5 = c3.scheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
 
-		sec6 = c4.scheduleSection('R', "4:10 - 6:00 PM", "SCI241", 15);
+		sec6 = c4.scheduleSection("R", "4:10 - 6:00 PM", "SCI241", 15);
 		
-		sec7 = c5.scheduleSection('M', "4:10 - 6:00 PM", "ARTS25", 40);
+		sec7 = c5.scheduleSection("M", "4:10 - 6:00 PM", "ARTS25", 40);
 		
 		// Add these to the Schedule of Classes.
 

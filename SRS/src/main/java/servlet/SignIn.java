@@ -53,11 +53,11 @@ public class SignIn extends HttpServlet {
 		
 		if(kind.equals("Student")){
 			admin=new Student(0,userSSn,userPassword);
-			through=service.signIn(admin);
+			through=service.signInStudent(admin);
 			
 		}else if(kind.equals("Professor")){
 			admin=new Professor(0,userSSn,userPassword);
-			through=service.signIn(admin);
+			through=service.signInProfessor(admin);
 		}
 		
 		if(through!=null){

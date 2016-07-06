@@ -7,7 +7,7 @@ import model.Professor;
 
 public interface ProfessorDAO {
 
-	void updateTeachers(String[] changes, String[] changeNos, String[] changeNames, String[] changeDepartments);
+	void updateTeachers(Professor ud);
 
 	void deleteTeachers(String[] deletes);
 
@@ -15,6 +15,6 @@ public interface ProfessorDAO {
 
 	List<Professor> getProfessors();
 
-	Person signIn(Person admin);
+	Person signInProfessor(Person admin);
 
 }

@@ -19,6 +19,10 @@ public class TranscriptEntry {
 	//----------------
 	// Constructor(s).
 	//----------------
+	
+	public TranscriptEntry() {
+		
+	}
 
 	public TranscriptEntry(Student s, String grade, Section se) {
 		this.setStudent(s);
