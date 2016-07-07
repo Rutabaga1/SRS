@@ -69,11 +69,11 @@
 
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
-	<p>出错了！</p>
+	<p align="center"><font size="3" color="brown"><strong>${requestScope.falseResult }</strong></font></p><br>
 	  	<table>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
-		   			<tr height="200px">
+		   			<tr >
 		   				 <td >${oneResult.value}</td> 
 		   				
 		   			</tr>

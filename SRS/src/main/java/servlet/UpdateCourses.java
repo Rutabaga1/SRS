@@ -45,14 +45,14 @@ public class UpdateCourses extends HttpServlet {
 		WebService service = new WebService();
 		for(int i=0;i<changeNos.length;i++){
 			for(int j=0;j<changes.length;j++){
-				if(changes[j].equals(changeNos[i]))
+				if(changes[j].equals(changeNos[i])){
 					updateC=new Course(changeNos[i],changeNames[i],Double.valueOf(changeCredits[i]));
 					service.updateCourses(updateC,changePres[i]);
-		
+				}
 			}
 		}
 		//response.sendRedirect("index.jsp");
-		request.getRequestDispatcher("course.jsp").forward(request, response);
+		request.getRequestDispatcher("SearchCourses").forward(request, response);
 	}
 
 	/**

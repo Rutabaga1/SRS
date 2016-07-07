@@ -62,14 +62,20 @@
 
 	<div id="separator">
 		<div class="center-block">
-			<h3>管理员</h3>
-			<span>: 请登录</span>
+			<h3>${sessionScope.userName }</h3>
+			<span>: ${sessionScope.ssn }</span>
 		</div>
 	</div>
 
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
-		<form action="enrollCourseServlet">
+	
+	<p align="center"><font size="3" color="brown"><strong>学期选课</strong></font></p><br><br>
+	
+	<form action="enrollCourseServlet">
+		<p align="center"><input class="submit" type="submit" value="保存" ></p><br><br>
+	
+		
 	  	<table id="01" width="45%" align="left">
 		<tr>
 			<td width="20px">&nbsp;</td>
@@ -85,8 +91,7 @@
 			<td width="200px">已选课程(选中可退选)</td>
 		</tr>
 	</table>
-	<br /><br /><br /><br /><br /><br /><br />
-	  <p align="center"><input class="submit" type="submit" value="保存" ></p>
+	  
 	  </form>
 	</div>
 	

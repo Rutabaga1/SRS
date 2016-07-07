@@ -21,7 +21,7 @@ public class TranscriptEntry {
 	//----------------
 	
 	public TranscriptEntry() {
-		
+		student=new Student(0,"","");
 	}
 
 	public TranscriptEntry(Student s, String grade, Section se) {

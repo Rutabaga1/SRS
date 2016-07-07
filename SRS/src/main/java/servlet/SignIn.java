@@ -62,7 +62,7 @@ public class SignIn extends HttpServlet {
 		
 		if(through!=null){
 			page="index.jsp";
-			//request.setAttribute("userName", through.getName());        
+			request.getSession().setAttribute("personType", kind);       
 	        request.getSession().setAttribute("ssn", userSSn);
 	        request.getSession().setAttribute("userName", through.getName());
 	        if("auto".equals(auto)){//记住密码

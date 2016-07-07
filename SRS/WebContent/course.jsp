@@ -35,7 +35,7 @@
 			 	<li class=""> <a href="SearchTranscript">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成绩查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 				</li>
-		 		<li class=""> <a href="SearchCourses">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		 		<li class=""> <a href="SearchCourses" class="active">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 			    </li>
                 <li class=""><a href="SearchTeachers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -101,11 +101,11 @@
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
 		   			<tr >
-		   				<td><input type="checkbox" name="change" value='${oneResult.courseNo}'></td>
-		   				<td ><input type="text" name="changeNo" value='${oneResult.courseNo}' readonly="readonly"></td>
-		   				 <td ><input type="text" name="changeName" value='${oneResult.courseName}'></td> 
-		   				<td ><input type="text" name="changeCredits" value='${oneResult.credits}'></td>
-		   				<td ><input type="text" name="changePre" value='${oneResult.preCourse}'></td>
+		   				<td><input type="checkbox" name="change" value='${oneResult.courseNo}'>&nbsp;&nbsp;</td>
+		   				<td ><input type="text" name="changeNo" value='${oneResult.courseNo}' readonly="readonly" ></td>
+		   				 <td ><input type="text" name="changeName" value='${oneResult.courseName}' ></td> 
+		   				<td ><input type="text" name="changeCredits" value='${oneResult.credits}' ></td>
+		   				<td ><input type="text" name="changePre" value='${oneResult.preCourseNos}' ></td>
 		   			</tr>
 		   		</c:forEach>
 		   </table>
@@ -120,17 +120,17 @@
 	  			
 	  			<tr>
 	  					<td>&nbsp;</td>
-		   				<td >课程编号</td>
-		   				 <td >课程名称</td> 
+		   				<td >课程编号&nbsp;&nbsp;</td>
+		   				 <td >课程名称&nbsp;&nbsp;</td> 
 		   				<td >课程学分</td>
 		   				
 		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
 		   			<tr >
-		   				<td><input type="checkbox" name="delete" value='${oneResult.courseNo}'></td>
-		   				<td >${oneResult.courseNo}</td>
-		   				 <td >${oneResult.courseName}</td> 
+		   				<td><input type="checkbox" name="delete" value='${oneResult.courseNo}'>&nbsp;&nbsp;</td>
+		   				<td >${oneResult.courseNo}&nbsp;&nbsp;</td>
+		   				 <td >${oneResult.courseName}&nbsp;&nbsp;</td> 
 		   				<td >${oneResult.credits}</td>
 		   			</tr>
 		   		</c:forEach>

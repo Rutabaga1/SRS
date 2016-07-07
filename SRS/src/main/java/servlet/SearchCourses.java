@@ -46,6 +46,7 @@ public class SearchCourses extends HttpServlet {
 		List<Course> cs=service.getCourses();
 		
 		if(cs.isEmpty()){
+			request.setAttribute("falseResult", "没有找到课程信息！");
 			request.getRequestDispatcher(page).forward(request, response);
 		}else{
 			request.setAttribute("result",cs);

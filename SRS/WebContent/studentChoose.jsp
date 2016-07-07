@@ -42,7 +42,7 @@
                		 
 	            </li>
 
-	            <li class=""><a href="StudentofSection">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
+	            <li class=""><a href="StudentofSection" class="active">&nbsp;&nbsp;&nbsp;已选学生&nbsp;&nbsp;&nbsp;</a>
 	   				
 	            </li>
 	            
@@ -69,20 +69,36 @@
 
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
-	<p>选课的学生：</p>
-	  	<table>
-	  		<tr>
-	  			<td>课程名称</td>
-	  			<td>选课学生</td>
-	  		</tr>
-	  		<c:forEach var="oneResult" items="${requestScope.result }">
-		   			
-		   			<tr height="200px">
-		   				 <td >${oneResult.courseName}</td> 
-		   				<td >${oneResult.student.name}</td>
+	<p><font size="3" color="brown"><strong>选课的学生</strong></font></p><br><br>
+	
+	<table  width="45%" align="left">
+		<tr>
+			
+			<td >课程名称</td>
+			<td >选课学生名称</td>
+		</tr>
+		<c:forEach var="oneResult1" items="${requestScope.resultTranscriptEntry }">
+		   	<c:forEach var="oneResult2" items="${requestScope.resultStudent }">
+		   		<c:if test="${oneResult1.student.ssn}==${oneResult2.ssn}">
+		   		
+		   			<tr align="right">
+		   				 <td >${oneResult1.representedCourse.courseName}</td>   <!-- 嵌套和c:if 判断     -->
+		   				<td >${oneResult2.name}</td>
 		   			</tr>
+		   			
+		   			</c:if>
 		   		</c:forEach>
-		   </table>
+		   	</c:forEach>
+		
+	</table>
+	  	
+	  	<table  width="45%" align="right">
+		
+		
+		   		
+		
+	</table>
+	  	
 	</div>
 	
 </div><!--   width="120px"  #wrapper -->

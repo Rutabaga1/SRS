@@ -45,6 +45,7 @@ public class SearchTranscrpit extends HttpServlet {
 		Transcript tst=service.getTranscript(ssn);
 		
 		if(tst.hashCode()==0){
+			request.setAttribute("falseResult", "没有找到成绩信息！");
 			request.getRequestDispatcher(page).forward(request, response);
 		}else{
 			request.setAttribute("result",tst.getTranscriptEntries());

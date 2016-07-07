@@ -6,13 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
+
 
 import SRSDAO.TranscriptDAO;
 
 import model.ScheduleOfClasses;
 import model.Section;
+import model.Student;
 import model.Transcript;
 import model.TranscriptEntry;
 import util.DBUtil;
@@ -25,22 +27,24 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 	private SQLException ex=null;
 	
 	@Override
-	public String  getStudentSsnfromTranscript(Section st) {
+	public List<TranscriptEntry>  getStudentSsnfromTranscript(ScheduleOfClasses professorClass) {
 		// TODO Auto-generated method stub
-		String ssnTranscript=null;
+		List<TranscriptEntry> tstSsn=new ArrayList<TranscriptEntry>();
+		TranscriptEntry ssnTranscript=new TranscriptEntry();
 		
 		try{
-			
-			stmt=conn.prepareStatement("SELECT studentNo FROM Transcript where sectionNo=?");
-			stmt.setInt(1, st.getSectionNo());
+			for (Section s : professorClass.getSectionsOffered().values()) {
+			stmt=conn.prepareStatement("SELECT studentNo,courseName FROM Transcript where sectionNo=?");
+			stmt.setInt(1, s.getSectionNo());
 			/*stmt.setString(2, admin.getCplace());*/
 			ResultSet rs=stmt.executeQuery();
 			//ssnTranscript=new ArrayList<String>();
 			while(rs.next()){
 				//tra.getStudent().setName(n);; TranscriptEntry(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
-				
-				ssnTranscript=rs.getString("studentNo");
-			}
+				ssnTranscript.setCourseName(rs.getString("courseName"));
+				ssnTranscript.getStudent().setSsn(rs.getString("studentNo"));
+				tstSsn.add(ssnTranscript);
+			}}
 			}catch(SQLException e){
 				ex=e;
 			}finally{
@@ -57,7 +61,7 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 				throw new RuntimeException(ex);
 			}
 			}
-		return ssnTranscript;
+		return tstSsn;
 	}
 
 	@Override
@@ -77,6 +81,7 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 				//tra.getStudent().setName(n);; TranscriptEntry(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
 				transcriptEntry.setCourseName(rs.getString("courseName"));
 				transcriptEntry.setGrade(rs.getString("grade"));
+				//transcriptEntry.getStudent().setSsn(ssn);
 				transcript.addTranscriptEntry(transcriptEntry);
 			}
 			}catch(SQLException e){
@@ -128,23 +133,21 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 	}
 
 	@Override
-	public List<String> getTranscript(String ssn, ScheduleOfClasses scs) {
+	public List<Integer> getTranscript(String ssn, ScheduleOfClasses scs) {
 		// TODO Auto-generated method stub
-		List<String> pros=null;
+		List<Integer> pros=new ArrayList<Integer>();
 		
 		
 		try{
 			for(String key : scs.getSectionsOffered().keySet()){
-			stmt=conn.prepareStatement("SELECT courseName FROM Transcript where sectionNo=? and studentNo=?");
+			stmt=conn.prepareStatement("SELECT sectionNo FROM Transcript where sectionNo=? and studentNo=?");
 			stmt.setInt(1, scs.getSectionsOffered().get(key).getSectionNo());
 			stmt.setString(2, ssn);
 			ResultSet rs=stmt.executeQuery();
-			
-			pros=new ArrayList<String>();
 			while(rs.next()){
 				//pro=new Professor(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
 				
-				pros.add(String.valueOf(rs.getInt("sectionNo")));
+				pros.add(rs.getInt("sectionNo"));
 			}}
 			}catch(SQLException e){
 				ex=e;
@@ -163,6 +166,78 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 			}
 			}
 		return pros;
+	}
+
+	@Override
+	public void addEnolledCourses(String ssn, int sectionNo, String courseName) {
+		// TODO Auto-generated method stub
+		try{
+			stmt=conn.prepareStatement("INSERT INTO Course(studentNo,sectionNo,courseName) VALUES(?,?,?)");
+			stmt.setString(1, ssn);
+			stmt.setInt(2,sectionNo);
+			stmt.setString(3, courseName);
+			
+			
+			
+			stmt.executeUpdate();
+			}catch(SQLException e){
+				ex=e;
+			}finally{
+				if(conn!=null){
+					try{
+						conn.close();
+					}catch(SQLException e){
+						if(ex==null){
+							ex=e;
+						}
+					}
+				}
+			if(ex!=null){
+				throw new RuntimeException(ex);
+			}
+			}
+	}
+
+	@Override
+	public HashMap<Integer, HashMap<String, Student>> getEnrolledStudents(String[] selects) {
+		// TODO Auto-generated method stub
+		HashMap<Integer, HashMap<String, Student>> AllSectionsEnrolledStudents=null;
+		HashMap<String, Student> enrolledStudents=null;
+		Student student=new Student(0,"","");
+		enrolledStudents=new HashMap<String, Student>();
+		AllSectionsEnrolledStudents=new HashMap<Integer, HashMap<String, Student>>();
+		try{
+			for(int i=0;i<selects.length;i++){
+			stmt=conn.prepareStatement("SELECT studentNo FROM Transcript where sectionNo=?");
+			stmt.setInt(1, Integer.parseInt(selects[i]));
+			/*stmt.setString(2, admin.getCplace());*/
+			ResultSet rs=stmt.executeQuery();
+			
+				while(rs.next()){
+					student.setSsn(rs.getString("studentNo"));
+					enrolledStudents.put(rs.getString("studentNo"),student);				
+				}
+				
+				//enrolledStudents.put(Integer.parseInt(selects[i]),student);
+				AllSectionsEnrolledStudents.put(Integer.parseInt(selects[i]), enrolledStudents);
+			}
+			}catch(SQLException e){
+				ex=e;
+			}finally{
+				if(conn!=null){
+					try{
+						conn.close();
+					}catch(SQLException e){
+						if(ex==null){
+							ex=e;
+						}
+					}
+				}
+			if(ex!=null){
+				throw new RuntimeException(ex);
+			}
+			}
+		return AllSectionsEnrolledStudents;
 	}
 	
 	

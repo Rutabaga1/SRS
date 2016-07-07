@@ -1,7 +1,9 @@
 package service;
 
 
+import java.util.HashMap;
 import java.util.List;
+
 
 import SRSDAO.*;
 import model.Person;
@@ -10,6 +12,7 @@ import model.ScheduleOfClasses;
 import model.Section;
 import model.Student;
 import model.Transcript;
+import model.TranscriptEntry;
 import model.Course;
 
 //import java.util.List;
@@ -37,7 +40,7 @@ public class WebService {
 		return sectionDAO.getScheduleofClasses(semester);
 	}
 
-	public List<String> getTranscript(String ssn, ScheduleOfClasses scs) {
+	public List<Integer> getTranscript(String ssn, ScheduleOfClasses scs) {
 		// TODO Auto-generated method stub
 		return transcriptDAO.getTranscript(ssn,scs);
 	}
@@ -97,9 +100,9 @@ public class WebService {
 		return sectionDAO.getProfessorScheduleOfClasses(ssn);
 	}
 
-	public String getStudentSsnfromTranscript(Section s) {
+	public List<TranscriptEntry> getStudentSsnfromTranscript(ScheduleOfClasses professorClass) {
 		// TODO Auto-generated method stub
-		return transcriptDAO.getStudentSsnfromTranscript(s);
+		return transcriptDAO.getStudentSsnfromTranscript(professorClass);
 	}
 
 	public void updateTeachers(Professor ud) {
@@ -110,6 +113,31 @@ public class WebService {
 	public void updateCourses(Course ud, String changeCredits) {
 		// TODO Auto-generated method stub
 		courseDAO.updateCourses(ud,changeCredits);
+	}
+
+	public Course getCoursesByCourseNo(String courseNo) {
+		// TODO Auto-generated method stub
+		return courseDAO.getCoursesByCourseNo(courseNo);
+	}
+
+	public void addEnolledCourses(String ssn, int sectionNo, String courseName) {
+		// TODO Auto-generated method stub
+		transcriptDAO.addEnolledCourses(ssn,sectionNo,courseName);
+	}
+
+	public List<Course> getCoursesForSection(ScheduleOfClasses scs) {
+		// TODO Auto-generated method stub
+		return courseDAO.getCoursesByCourseNo(scs);
+	}
+
+	public HashMap<Integer, HashMap<String, Student>> getEnrolledStudents(String[] selects) {
+		// TODO Auto-generated method stub
+		return transcriptDAO.getEnrolledStudents(selects);
+	}
+
+	public List<Student> getStudentsOfProfessor(List<TranscriptEntry> tstSsn) {
+		// TODO Auto-generated method stub
+		return studentDAO.getStudentsOfProfessor(tstSsn);
 	}
 	
     

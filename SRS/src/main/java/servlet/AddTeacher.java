@@ -43,7 +43,7 @@ public class AddTeacher extends HttpServlet {
 		Professor add1=new Professor(name,addNo,"",addDepartment);
 		service.addProfessor(add1);
 		
-		String page="teachers.jsp";
+		String page="SearchTeachers";
 		
 		request.getRequestDispatcher(page).forward(request, response);
 	}

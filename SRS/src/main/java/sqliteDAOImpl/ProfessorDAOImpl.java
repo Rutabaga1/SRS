@@ -29,13 +29,12 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 		// TODO Auto-generated method stub
 		try{                                                        
 			
-			stmt = conn.prepareStatement("update Professor set name=?,department=? where ssn=?");
+			stmt = conn.prepareStatement("UPDATE Professor set name=?,department=? where ssn=?");
 			stmt.setString(1, ud.getName());
 			stmt.setString(2, ud.getDepartment());
-			
 			stmt.setString(3, ud.getSsn());
-			
 			stmt.executeUpdate();
+			
 		}catch(SQLException e){
 			ex=e;
 		}finally{
@@ -60,7 +59,7 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 		try{
 			
 			for(int i=0;i<deletes.length;i++){
-				stmt=conn.prepareStatement("DELETE FROM Professor WHERE professorNo=?");
+				stmt=conn.prepareStatement("DELETE FROM Professor WHERE ssn=?");
 				stmt.setString(1,deletes[i]);
 				//stmt.setString(2, administrator.getPassword());
 				stmt.executeUpdate();
@@ -127,7 +126,7 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 			ResultSet rs=stmt.executeQuery();
 			pros=new ArrayList<Professor>();
 			while(rs.next()){
-				pro=new Professor(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
+				pro=new Professor(rs.getString("name"),rs.getString("ssn"),"", rs.getString("department"));
 				
 				pros.add(pro);
 			}
@@ -163,7 +162,7 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 			ResultSet rs=stmt.executeQuery();
 			
 			while(rs.next()){
-				pro=new Professor(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
+				pro=new Professor(rs.getString("name"),rs.getString("ssn"),"", rs.getString("department"));
 				
 				
 			}

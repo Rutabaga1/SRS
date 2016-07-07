@@ -38,7 +38,7 @@
 		 		<li class=""> <a href="SearchCourses">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有课程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 			    </li>
-                <li class=""><a href="SearchTeachers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <li class=""><a href="SearchTeachers" class="active">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                		 
 	            </li>
 
@@ -98,8 +98,8 @@
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
 		   			<tr >
-		   				<td><input type="checkbox" name="change" value='${oneResult.ssn}'></td>
-		   				<td ><input type="text" name="changeNo" value='${oneResult.ssn}'></td>
+		   				<td><input type="radio" name="change" value='${oneResult.ssn}'>&nbsp;&nbsp;</td>
+		   				<td ><input type="text" name="changeNo" value='${oneResult.ssn}' readonly="readonly"></td>
 		   				 <td ><input type="text" name="changeName" value='${oneResult.name}'></td> 
 		   				<td ><input type="text" name="changeDepartment" value='${oneResult.department}'></td>
 		   			</tr>
@@ -116,14 +116,14 @@
 	  		<tr>
 	  					<td>&nbsp;</td>
 		   				<td >教师编号&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		   				 <td >教师名称</td> 
+		   				 <td >教师名称&nbsp;&nbsp;&nbsp;&nbsp;</td> 
 		   				<td >教师部门</td>
 		   				
 		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
 		   			<tr >
-		   				<td><input type="checkbox" name="delete" value='${oneResult.ssn}'></td>
+		   				<td><input type="checkbox" name="delete" value='${oneResult.ssn}'>&nbsp;&nbsp;</td>
 		   				<td >${oneResult.ssn}&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   				 <td >${oneResult.name}&nbsp;&nbsp;&nbsp;&nbsp;</td> 
 		   				<td >${oneResult.department}&nbsp;&nbsp;&nbsp;&nbsp;</td>

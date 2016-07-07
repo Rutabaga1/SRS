@@ -41,8 +41,8 @@ public class DeleteCourses extends HttpServlet {
 		service.deleteCourses(deletes);
 		
 		
-		//response.sendRedirect("index.jsp");
-		request.getRequestDispatcher("course.jsp").forward(request, response);
+		//response.sendRedirect("SearchCourses");
+		request.getRequestDispatcher("SearchCourses").forward(request, response);
 	}
 
 	/**

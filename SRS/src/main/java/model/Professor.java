@@ -52,9 +52,13 @@ public class Professor extends Person {
 
 		teaches = new ArrayList<Section>();
 	}
+	
+	
 	//----------------
 	// Accessor methods.
 	//----------------
+
+	
 
 	public void setTitle(String title) {
 		this.title = title;

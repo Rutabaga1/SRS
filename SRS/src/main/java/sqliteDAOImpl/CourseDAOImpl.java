@@ -9,6 +9,7 @@ import java.util.List;
 
 import SRSDAO.CourseDAO;
 import model.Course;
+import model.ScheduleOfClasses;
 import util.DBUtil;
 
 
@@ -105,7 +106,7 @@ public class CourseDAOImpl implements CourseDAO{
 					String[] pres=rs.getString("preCourseNos").split(",");
 					for(int i=0;i<pres.length;i++){
 						while(rs.next()){    //遍历添加先修课
-							preCourse=new Course(rs.getString("courseNo"),rs.getString("courseName"), Double.valueOf(rs.getString("credits")));
+							preCourse=new Course(pres[i],"", 0);
 							course.addPrerequisite(preCourse);
 						}
 				}	}
@@ -158,6 +159,86 @@ public class CourseDAOImpl implements CourseDAO{
 			throw new RuntimeException(ex);
 		}
 		}
+	}
+
+	@Override
+	public Course getCoursesByCourseNo(String courseNo) {
+		// TODO Auto-generated method stub
+		Course course=null;
+		Course preCourse=null;
+		try{
+			
+			stmt=conn.prepareStatement("SELECT courseName,credits,preCourseNos FROM Course where courseNo=?");
+			stmt.setString(1, courseNo);
+			/*stmt.setString(2, admin.getCplace());*/
+			ResultSet rs=stmt.executeQuery();
+			
+			while(rs.next()){
+				course=new Course(courseNo,rs.getString("courseName"), Double.valueOf(rs.getString("credits")));
+				if(rs.getString("preCourseNos")!=null){//是否有选修课
+					String[] pres=rs.getString("preCourseNos").split(",");
+					for(int i=0;i<pres.length;i++){
+						while(rs.next()){    //遍历添加先修课
+							preCourse=new Course(pres[i],"", 0);
+							course.addPrerequisite(preCourse);
+						}
+				}	}
+				
+			}
+			}catch(SQLException e){
+				ex=e;
+			}finally{
+				if(conn!=null){
+					try{
+						conn.close();
+					}catch(SQLException e){
+						if(ex==null){
+							ex=e;
+						}
+					}
+				}
+			if(ex!=null){
+				throw new RuntimeException(ex);
+			}
+			}
+		return course;
+	}
+
+	@Override
+	public List<Course> getCoursesByCourseNo(ScheduleOfClasses scs) {
+		// TODO Auto-generated method stub
+		List<Course> courses=new ArrayList<Course>();
+		Course course=null;
+		//Course preCourse=null;
+		try{
+			for(String key : scs.getSectionsOffered().keySet()){
+			stmt=conn.prepareStatement("SELECT courseNo,courseName,credits FROM Course where courseNo=?");
+			stmt.setString(1, scs.getSectionsOffered().get(key).getRepresentedCourse().getCourseNo());
+			/*stmt.setString(2, admin.getCplace());*/
+			ResultSet rs=stmt.executeQuery();
+			
+			while(rs.next()){
+				course=new Course(rs.getString("courseNo"),rs.getString("courseName"), Double.valueOf(rs.getString("credits")));
+				
+				courses.add(course);
+			}}
+			}catch(SQLException e){
+				ex=e;
+			}finally{
+				if(conn!=null){
+					try{
+						conn.close();
+					}catch(SQLException e){
+						if(ex==null){
+							ex=e;
+						}
+					}
+				}
+			if(ex!=null){
+				throw new RuntimeException(ex);
+			}
+			}
+		return courses;
 	}
 	
 	

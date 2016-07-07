@@ -47,7 +47,7 @@ public class AddCourse extends HttpServlet {
 		
 		service.addCourse(add1,addPres);
 		
-		String page="course.jsp";
+		String page="SearchCourses";
 		
 		request.getRequestDispatcher(page).forward(request, response);
 	}

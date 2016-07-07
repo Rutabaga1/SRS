@@ -17,7 +17,8 @@ public class Course {
 	private String courseName;
 	private double credits;
 	private ArrayList<Section> offeredAsSection; 
-	private ArrayList<Course> prerequisites; 
+	private ArrayList<Course> prerequisites;
+	private String preCourseNos="";
 	
 	//----------------
 	// Constructor(s).
@@ -34,10 +35,17 @@ public class Course {
 		prerequisites = new ArrayList<Course>();
 	}
 	
-	
+	public Course() {
+		// TODO Auto-generated constructor stub
+		offeredAsSection = new ArrayList<Section>();
+		prerequisites = new ArrayList<Course>();
+	}
 	//------------------
 	// Accessor methods.
 	//------------------
+
+	
+
 
 	public void setCourseNo(String cNo) {
 		courseNo = cNo;
@@ -124,5 +132,16 @@ public class Course {
 
 	public void addSection(Section s) {
 		offeredAsSection.add(s);
+	}
+	
+	public String getPreCourseNos() {
+		
+		for (Course c : prerequisites) {
+			preCourseNos+=c.courseNo+",";
+		}
+		if(!preCourseNos.equals("")){
+			preCourseNos=preCourseNos.substring(0,preCourseNos.length()-1);
+			}
+		return preCourseNos;
 	}
 }

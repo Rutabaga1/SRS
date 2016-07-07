@@ -70,7 +70,7 @@
 	<!-- START CONTENT -->
 	<div class="center-block-page clearfix">
 	  	
-	  <p align="center">欢迎您！</p>
+	  <p align="center"><font size="3" color="brown"><strong>欢迎您！</strong></font></p>
 	</div>
 	
 </div><!--   width="120px"  #wrapper -->

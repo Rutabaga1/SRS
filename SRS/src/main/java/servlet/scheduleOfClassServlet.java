@@ -2,7 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Course;
 import model.ScheduleOfClasses;
 
 import service.WebService;
@@ -52,9 +53,19 @@ public class scheduleOfClassServlet extends HttpServlet {
 		WebService service = new WebService();
 		 String ssn= (String) request.getSession().getAttribute("ssn");
 		 //String username = (String) request.getSession().getAttribute("userName");
-		String semeter="2016-2017--1";
+		String semeter="2014-2015--1";
 		ScheduleOfClasses scs=service.getScheduleOfClasses(semeter); 
-		List<String> selectedSectionNo=service.getTranscript(ssn,scs);// 找出学生该学期已选课程sectionNo
+		List<Integer> selectedSectionNo=service.getTranscript(ssn,scs);// 找出学生该学期已选课程sectionNo
+		List<Course> getCourseName=new ArrayList<Course>();
+		
+		getCourseName=service.getCoursesForSection(scs);
+		
+		for(String key : scs.getSectionsOffered().keySet()){
+			for(int i=0;i<getCourseName.size();i++){
+				if(getCourseName.get(i).getCourseNo().equals(String.valueOf(scs.getSectionsOffered().get(key).getRepresentedCourse().getCourseNo())))
+				scs.getSectionsOffered().get(key).setRepresentedCourse(getCourseName.get(i));//找出该section对应的课程名称
+		}
+			}
 		
 		if(!scs.isEmpty()){
 			JSONArray ja=new JSONArray();
@@ -67,11 +78,12 @@ public class scheduleOfClassServlet extends HttpServlet {
 				ja.put(jo);
 				
 				for(int i=0;i<selectedSectionNo.size();i++){
-					if(selectedSectionNo.get(i).equals(String.valueOf(scs.getSectionsOffered().get(key).getSectionNo())))
+					if(selectedSectionNo.get(i)==scs.getSectionsOffered().get(key).getSectionNo()){//如果学生已选则显示到另一张表
 						jo=new JSONObject();
 						jo.put("tid",scs.getSectionsOffered().get(key).getSectionNo() );
 						jo.put("enrolled",scs.getSectionsOffered().get(key).getFullSectionInfo());
 						ja.put(jo);
+					}
 				}
 			}
 		

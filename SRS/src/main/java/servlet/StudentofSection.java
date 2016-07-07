@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.ScheduleOfClasses;
 import model.Section;
 import model.Student;
-
+import model.TranscriptEntry;
 import service.WebService;
 
 
@@ -45,24 +45,25 @@ public class StudentofSection extends HttpServlet {
 		
 		String page="false.jsp";
 		WebService service = new WebService();
-		List<String> tstSsn=new ArrayList<String>();
+		List<TranscriptEntry> tstSsn=new ArrayList<TranscriptEntry>();
 		List<Student> enolledStudent=new ArrayList<Student>();
 		
 		String ssn= (String) request.getSession().getAttribute("ssn");
 		ScheduleOfClasses professorClass=service.getProfessorScheduleOfClasses(ssn);
-		for (Section s : professorClass.getSectionsOffered().values()) {
-			tstSsn.add(service.getStudentSsnfromTranscript(s));
-		}
 		
-		for(int i=0;i<tstSsn.size();i++){
-			enolledStudent.add(service.getStudent(tstSsn.get(i)));
-		}
+			tstSsn=service.getStudentSsnfromTranscript(professorClass);
+		
+		
+		
+			enolledStudent=service.getStudentsOfProfessor(tstSsn);
+		
 		
 		if(enolledStudent.size()==0){
+			request.setAttribute("falseResult", "没有学生选课的信息！");
 			request.getRequestDispatcher(page).forward(request, response);
 		}else{
 			request.setAttribute("resultStudent",enolledStudent);//注意
-			request.setAttribute("resultSectons",professorClass.getSectionsOffered());
+			request.setAttribute("resultTranscriptEntry",tstSsn);
 			request.getRequestDispatcher("studentChoose.jsp").forward(request, response);
 		}
 		

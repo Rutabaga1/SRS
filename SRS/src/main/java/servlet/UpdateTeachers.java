@@ -36,7 +36,7 @@ public class UpdateTeachers extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		
-		String[] changes=request.getParameterValues("change");
+		String change=request.getParameter("change");
 		String[] changeNos=request.getParameterValues("changeNo");
 		String[] changeNames=request.getParameterValues("changeName");
 		String[] changeDepartments=request.getParameterValues("changeDepartment");
@@ -45,19 +45,18 @@ public class UpdateTeachers extends HttpServlet {
 		Professor updateP=null;
 		
 		for(int i=0;i<changeNos.length;i++){
-			for(int j=0;j<changes.length;j++){
-				
-				if(changes[j].equals(changeNos[i]))
-					updateP=new Professor(changeNos[i],changeNames[i],"",changeDepartments[i]);
+			
+				if(change.equals(changeNos[i])){
+					updateP=new Professor(changeNames[i],changeNos[i],"",changeDepartments[i]);
 					service.updateTeachers(updateP);
-		
-			}
+				}
+			
 		}
 		
 		
 		
-		//response.sendRedirect("index.jsp");
-		request.getRequestDispatcher("teachers.jsp").forward(request, response);
+		//response.sendRedirect("SearchTeachers");
+		request.getRequestDispatcher("SearchTeachers").forward(request, response);
 	}
 
 	/**

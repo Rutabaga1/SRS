@@ -42,7 +42,7 @@ public class DeleteTeachers extends HttpServlet {
 		
 		
 		//response.sendRedirect("index.jsp");
-		request.getRequestDispatcher("teachers.jsp").forward(request, response);
+		request.getRequestDispatcher("SearchTeachers").forward(request, response);
 	}
 
 	/**

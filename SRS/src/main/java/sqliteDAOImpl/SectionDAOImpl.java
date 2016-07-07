@@ -74,7 +74,7 @@ public class SectionDAOImpl implements SectionDAO{
 			ResultSet rs=stmt.executeQuery();
 			//ssnTranscript=new ArrayList<String>();
 			while(rs.next()){
-				//tra.getStudent().setName(n);; TranscriptEntry(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
+				section=new Section();
 				section.getRepresentedCourse().setCourseNo(rs.getString("courseNo"));
 				section.setDayOfWeek(rs.getString("dayOfWeek"));
 				section.getInstructor().setSsn(rs.getString("professorNo"));
@@ -108,7 +108,7 @@ public class SectionDAOImpl implements SectionDAO{
 	public ScheduleOfClasses getProfessorScheduleOfClasses(String ssn) {
 		// TODO Auto-generated method stub
 		ScheduleOfClasses ssnTranscript=new ScheduleOfClasses();
-		Section section=new Section();
+		Section section=null;
 		try{
 			
 			stmt=conn.prepareStatement("SELECT courseNo,sectionNo,dayOfWeek,timeOfDay,room,seatingCapacity,semester FROM Section where professorNo=?");
@@ -117,7 +117,7 @@ public class SectionDAOImpl implements SectionDAO{
 			ResultSet rs=stmt.executeQuery();
 			//ssnTranscript=new ArrayList<String>();
 			while(rs.next()){
-				//tra.getStudent().setName(n);; TranscriptEntry(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
+				section=new Section();
 				section.getRepresentedCourse().setCourseNo(rs.getString("courseNo"));
 				section.setDayOfWeek(rs.getString("dayOfWeek"));
 				section.setSemester(rs.getString("semester"));

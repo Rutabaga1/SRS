@@ -47,6 +47,7 @@ public class SearchTeachers extends HttpServlet {
 		List<Professor> ps=service.getProfessors();
 		
 		if(ps.isEmpty()){
+			request.setAttribute("falseResult", "没有找到教师信息！");
 			request.getRequestDispatcher(page).forward(request, response);
 		}else{
 			request.setAttribute("result",ps);

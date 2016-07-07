@@ -9,6 +9,7 @@ package model;
 
 import java.util.HashMap;
 
+
 public class Section {
 	//------------
 	// Attributes.
@@ -39,7 +40,8 @@ public class Section {
 	//----------------
 	
 	public Section() {
-		
+		representedCourse=new Course();
+		instructor=new Professor(0,"","");
 	}
 
 	public Section(int sNo, String day, String time, Course course,
@@ -64,7 +66,14 @@ public class Section {
 	//------------------
 	// Accessor methods.
 	//------------------
-
+	
+	public void setEnrolledStudents(HashMap<String, Student> enrolled) {
+		enrolledStudents=enrolled;
+		
+		/*for(int i=0;i<no.size();i++){
+			enrolledStudents.put(no.get(i).getSsn(), no.get(i)) ;
+	}*/}
+	
 	public void setSectionNo(int no) {
 		sectionNo = no;
 	}
@@ -88,7 +97,7 @@ public class Section {
 	public String getTimeOfDay() {
 		return timeOfDay;
 	}
-
+	
 	public void setInstructor(Professor prof) {
 		instructor = prof;
 	}
