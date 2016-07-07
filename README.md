@@ -23,10 +23,17 @@
 ![data](https://github.com/Rutabaga1/SRS/blob/master/picture/Transcript.PNG)
 ![data](https://github.com/Rutabaga1/SRS/blob/master/picture/Transcript2.PNG)
 # 运行界面
+### 登录
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/SignIn.PNG)
+### 主页
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/index.PNG)
+### 选课
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/enrollCourses.PNG)
+### 教师的增删查改
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/teachers.PNG)
+### 课程的增删查改
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/courses.PNG)
+### 成绩
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/TranscriptPage.PNG)
+### 退出
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/SignOut.PNG)
