@@ -21,10 +21,12 @@
 ![data](https://github.com/Rutabaga1/SRS/blob/master/picture/section.PNG)
 ![data](https://github.com/Rutabaga1/SRS/blob/master/picture/section2.PNG)
 ![data](https://github.com/Rutabaga1/SRS/blob/master/picture/Transcript.PNG)
-![data](https://github.com/Rutabaga1/SRS/blob/master/picture/Transcript2PNG)
+![data](https://github.com/Rutabaga1/SRS/blob/master/picture/Transcript2.PNG)
 # 运行界面
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/SignIn.PNG)
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/index.PNG)
+![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/enrollCourses.PNG)
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/teachers.PNG)
+![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/courses.PNG)
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/TranscriptPage.PNG)
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/SignOut.PNG)
