@@ -92,7 +92,7 @@
 	  	<table>
 	  		
 	  		<tr>
-	  					<td>&nbsp;</td>
+	  					<td>修改&nbsp;&nbsp;</td>
 		   				<td >课程编号</td>
 		   				 <td >课程名称</td> 
 		   				<td >课程学分</td>
@@ -116,10 +116,10 @@
 		   <p><font size="3" color="brown"><strong>删除课程</strong></font></p><br><br>
 		   
 		   <form action="DeleteCourses">
-		   <table>
+		   <table align="center">
 	  			
 	  			<tr>
-	  					<td>&nbsp;</td>
+	  					<td>删除&nbsp;&nbsp;</td>
 		   				<td >课程编号&nbsp;&nbsp;</td>
 		   				 <td >课程名称&nbsp;&nbsp;</td> 
 		   				<td >课程学分</td>

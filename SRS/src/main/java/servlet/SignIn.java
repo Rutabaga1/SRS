@@ -52,6 +52,7 @@ public class SignIn extends HttpServlet {
 		Person through=null;
 		
 		if(kind.equals("Student")){
+			kind=null;//为过滤器做设置
 			admin=new Student(0,userSSn,userPassword);
 			through=service.signInStudent(admin);
 			

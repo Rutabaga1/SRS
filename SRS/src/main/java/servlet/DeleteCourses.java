@@ -38,7 +38,7 @@ public class DeleteCourses extends HttpServlet {
 		
 		WebService service = new WebService();
 		
-		service.deleteCourses(deletes);
+		service.deleteCourses(deletes);	//往年的section和学生的成绩不能删除，所以只删除还没有开过课的课程信息
 		
 		
 		//response.sendRedirect("SearchCourses");

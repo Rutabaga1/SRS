@@ -42,7 +42,7 @@ public class AdminFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpServletRequest req = (HttpServletRequest) request; 
-        if(req.getSession().getAttribute("personType").equals("Professor")) {
+        if(req.getSession().getAttribute("personType")!= null) {
             chain.doFilter(request, response);
         }
         else {

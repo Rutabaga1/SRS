@@ -26,7 +26,7 @@
 			<div class="white-fix-left"></div>
 			<ul id="nav" class="sf-menu">
 
-			 		<li > <a href="index.jsp" class="active">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			 		<li > <a href="index.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
 			    </li>
 		 		<li class=""> <a href="enrollCourse.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -46,7 +46,7 @@
 	   				
 	            </li>
 	            
-	            <li class=""><a href="SignOut">&nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp;</a>
+	            <li class=""><a href="SignOut" class="active">&nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp;</a>
 	   				
 	            </li>
 
@@ -62,7 +62,7 @@
 
 	<div id="separator">
 		<div class="center-block">
-			<h3>您已经成功退出</h3>
+			<h3>您已经成功退出!</h3>
 			
 		</div>
 	</div>

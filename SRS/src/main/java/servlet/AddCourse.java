@@ -40,7 +40,7 @@ public class AddCourse extends HttpServlet {
 		String name=request.getParameter("addName");
 		String addNo=request.getParameter("addNo");
 		String addCredits=request.getParameter("addCredits");
-		String addPres=request.getParameter("addaddPre");
+		String addPres=request.getParameter("addPre");
 		//String[] pres=addPres.split(",");
 		WebService service = new WebService();
 		Course add1=new Course(name,addNo,Double.valueOf(addCredits));

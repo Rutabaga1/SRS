@@ -71,33 +71,36 @@
 	<div class="center-block-page clearfix">
 	<p><font size="3" color="brown"><strong>选课的学生</strong></font></p><br><br>
 	
-	<table  width="45%" align="left">
+	<table  width="45%" align="center">
 		<tr>
 			
 			<td >课程名称</td>
 			<td >选课学生名称</td>
 		</tr>
-		<c:forEach var="oneResult1" items="${requestScope.resultTranscriptEntry }">
+		
+		<c:forEach var="oneResult" items="${requestScope.result }">
+		   			<tr >
+		   				 <td >${oneResult.key}</td>  
+		   				<td >${oneResult.value}</td>
+		   			</tr>
+		   </c:forEach>
+		
+		<%-- <c:forEach var="oneResult1" items="${requestScope.resultTranscriptEntry }">
 		   	<c:forEach var="oneResult2" items="${requestScope.resultStudent }">
-		   		<c:if test="${oneResult1.student.ssn}==${oneResult2.ssn}">
+		   		<c:if test="${oneResult1.student.ssn}.equals(${oneResult2.ssn})">
 		   		
 		   			<tr align="right">
-		   				 <td >${oneResult1.representedCourse.courseName}</td>   <!-- 嵌套和c:if 判断     -->
+		   				 <td >${oneResult1.courseName}</td>   <!-- 嵌套和c:if 判断     -->
 		   				<td >${oneResult2.name}</td>
 		   			</tr>
 		   			
 		   			</c:if>
 		   		</c:forEach>
-		   	</c:forEach>
+		   	</c:forEach> --%>
 		
 	</table>
 	  	
-	  	<table  width="45%" align="right">
-		
-		
-		   		
-		
-	</table>
+	  	
 	  	
 	</div>
 	

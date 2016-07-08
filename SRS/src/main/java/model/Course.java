@@ -18,7 +18,7 @@ public class Course {
 	private double credits;
 	private ArrayList<Section> offeredAsSection; 
 	private ArrayList<Course> prerequisites;
-	private String preCourseNos="";
+	private String preCourseNos;
 	
 	//----------------
 	// Constructor(s).
@@ -135,7 +135,7 @@ public class Course {
 	}
 	
 	public String getPreCourseNos() {
-		
+		preCourseNos="";
 		for (Course c : prerequisites) {
 			preCourseNos+=c.courseNo+",";
 		}

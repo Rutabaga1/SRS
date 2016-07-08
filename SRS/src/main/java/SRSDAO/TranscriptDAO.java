@@ -6,7 +6,7 @@ import java.util.List;
 
 
 import model.ScheduleOfClasses;
-import model.Section;
+
 import model.Student;
 import model.Transcript;
 import model.TranscriptEntry;

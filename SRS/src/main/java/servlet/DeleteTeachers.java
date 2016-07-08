@@ -38,7 +38,7 @@ public class DeleteTeachers extends HttpServlet {
 		
 		WebService service = new WebService();
 		
-		service.deleteTeachers(deletes);
+		service.deleteTeachers(deletes);//往年的section和学生的成绩不能删除，所以只删除还没有开过课的教师的信息
 		
 		
 		//response.sendRedirect("index.jsp");

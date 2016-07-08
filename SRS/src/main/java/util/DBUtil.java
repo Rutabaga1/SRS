@@ -2,6 +2,8 @@ package util;
 
 import java.sql.*;
 
+import sqliteDAOImpl.TranscriptDAOImpl;
+
 
 public class DBUtil {
 	
@@ -16,6 +18,19 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 		return conn;			
+	}
+	
+	public static void closeConnection(){
+		SQLException ex=null;
+		if(TranscriptDAOImpl.conn2!=null){
+			try{
+				TranscriptDAOImpl.conn2.close();
+			}catch(SQLException e){
+				if(ex==null){
+					ex=e;
+				}
+			}
+		}
 	}
 	
 }

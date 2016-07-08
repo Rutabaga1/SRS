@@ -15,7 +15,7 @@ import service.WebService;
 /**
  * Servlet implementation class GuitarDelete
  */
-@WebServlet("/UpdateTeacher")
+@WebServlet("/UpdateCourses")
 public class UpdateCourses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -9,7 +9,7 @@ import SRSDAO.*;
 import model.Person;
 import model.Professor;
 import model.ScheduleOfClasses;
-import model.Section;
+
 import model.Student;
 import model.Transcript;
 import model.TranscriptEntry;

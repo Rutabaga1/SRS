@@ -20,6 +20,7 @@ import model.ScheduleOfClasses;
 import model.Student;
 import model.Transcript;
 import service.WebService;
+import util.DBUtil;
 
 
 
@@ -50,7 +51,8 @@ public class enrollCourseServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 
-
+		String[] selects=request.getParameterValues("select");
+		String[] drops=request.getParameterValues("drop");
 		String page="false.jsp";
 		WebService service = new WebService();
 		String ssn= (String) request.getSession().getAttribute("ssn");
@@ -60,9 +62,6 @@ public class enrollCourseServlet extends HttpServlet {
 		
 		List<EnrollmentStatus> allResult=new ArrayList<EnrollmentStatus>();
 		//EnrollmentStatus result=new EnrollmentStatus();
-		
-		String[] selects=request.getParameterValues("select");
-		String[] drops=request.getParameterValues("drop");
 		
 		if(drops!=null)
 		service.deleteTranscript(drops,ssn);//อหัก
@@ -91,16 +90,17 @@ public class enrollCourseServlet extends HttpServlet {
 		for(String key : scs.getSectionsOffered().keySet()){
 			EnrollmentStatus enroll=scs.getSectionsOffered().get(key).enroll(whoWantToEnroll);
 			if(enroll.value().equals("Enrollment successful!  :o)")){
-				Course course=service.getCoursesByCourseNo(scs.getSectionsOffered().get(key).getRepresentedCourse().getCourseNo());
-				service.addEnolledCourses(ssn,scs.getSectionsOffered().get(key).getSectionNo(),course.getCourseName());
+				//Course course=service.getCoursesByCourseNo(scs.getSectionsOffered().get(key).getRepresentedCourse().getCourseNo());
+				service.addEnolledCourses(ssn,scs.getSectionsOffered().get(key).getSectionNo(),scs.getSectionsOffered().get(key).getRepresentedCourse().getCourseName());
 			}else{
 				allResult.add(enroll);
 			}
 				
-			/*if(scs.getSectionsOffered().get(key).){
-				
-			}*/
+			/*Course course=service.getCoursesByCourseNo(scs.getSectionsOffered().get(key).getRepresentedCourse().getCourseNo());
+				service.addEnolledCourses(ssn,scs.getSectionsOffered().get(key).getSectionNo(),course.getCourseName());*/
 		}
+		
+		DBUtil.closeConnection();
 		
 		if(!allResult.isEmpty()){
 			request.setAttribute("falseResult", allResult);

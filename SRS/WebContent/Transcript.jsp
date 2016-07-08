@@ -75,13 +75,13 @@
 	  	<table align="center">
 	  	<tr align="center">
 	  					
-		   				 <td >课程名称</td> 
+		   				 <td >课程名称&nbsp;&nbsp;&nbsp;&nbsp;</td> 
 		   				<td >成绩</td>
 		   				
 		   		</tr>
 	  		<c:forEach var="oneResult" items="${requestScope.result }">
 		   			
-		   			<tr align="center">
+		   			<tr >
 		   				 <td >${oneResult.courseName}&nbsp;&nbsp;&nbsp;&nbsp;</td> 
 		   				<td >${oneResult.grade}</td>
 		   			</tr>

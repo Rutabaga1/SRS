@@ -89,7 +89,7 @@
 	  	<table>
 	  		
 	  		<tr>
-	  					<td>&nbsp;</td>
+	  					<td>修改&nbsp;&nbsp;</td>
 		   				<td >教师编号</td>
 		   				 <td >教师名称</td> 
 		   				<td >教师部门</td>
@@ -111,10 +111,10 @@
 		   <br><br>
 		   <p><font size="3" color="brown"><strong>删除教师</strong></font></p><br><br>
 		   <form action="DeleteTeachers">
-		   <table>
+		   <table align="center">
 	  		
 	  		<tr>
-	  					<td>&nbsp;</td>
+	  					<td>删除&nbsp;&nbsp;</td>
 		   				<td >教师编号&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   				 <td >教师名称&nbsp;&nbsp;&nbsp;&nbsp;</td> 
 		   				<td >教师部门</td>

@@ -105,10 +105,10 @@ public class CourseDAOImpl implements CourseDAO{
 				if(rs.getString("preCourseNos")!=null){//是否有选修课
 					String[] pres=rs.getString("preCourseNos").split(",");
 					for(int i=0;i<pres.length;i++){
-						while(rs.next()){    //遍历添加先修课
+						   
 							preCourse=new Course(pres[i],"", 0);
 							course.addPrerequisite(preCourse);
-						}
+						
 				}	}
 				courses.add(course);
 			}

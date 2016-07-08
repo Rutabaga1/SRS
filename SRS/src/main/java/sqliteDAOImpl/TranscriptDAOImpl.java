@@ -25,6 +25,7 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 	private Connection conn = DBUtil.getSqliteConnection();
 	private PreparedStatement stmt=null;
 	private SQLException ex=null;
+	public static Connection conn2 = DBUtil.getSqliteConnection();
 	
 	@Override
 	public List<TranscriptEntry>  getStudentSsnfromTranscript(ScheduleOfClasses professorClass) {
@@ -68,19 +69,20 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 	public Transcript getTranscript(String ssn) {
 		// TODO Auto-generated method stub
 		Transcript transcript=new Transcript();
-		TranscriptEntry transcriptEntry=new TranscriptEntry();
+		TranscriptEntry transcriptEntry=null;
 		
 		try{
 			
-			stmt=conn.prepareStatement("SELECT grade,courseName FROM Transcript where studentNo=?");
+			stmt=conn.prepareStatement("SELECT sectionNo,grade,courseName FROM Transcript where studentNo=?");
 			stmt.setString(1, ssn);
 			/*stmt.setString(2, admin.getCplace());*/
 			ResultSet rs=stmt.executeQuery();
 			//ssnTranscript=new ArrayList<String>();
 			while(rs.next()){
-				//tra.getStudent().setName(n);; TranscriptEntry(rs.getString("ssn"),rs.getString("name"),"", rs.getString("department"));
+				transcriptEntry=new TranscriptEntry();
 				transcriptEntry.setCourseName(rs.getString("courseName"));
 				transcriptEntry.setGrade(rs.getString("grade"));
+				transcriptEntry.getSection().setSectionNo(rs.getInt("sectionNo"));
 				//transcriptEntry.getStudent().setSsn(ssn);
 				transcript.addTranscriptEntry(transcriptEntry);
 			}
@@ -171,8 +173,10 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 	@Override
 	public void addEnolledCourses(String ssn, int sectionNo, String courseName) {
 		// TODO Auto-generated method stub
+		
+		
 		try{
-			stmt=conn.prepareStatement("INSERT INTO Course(studentNo,sectionNo,courseName) VALUES(?,?,?)");
+			stmt=conn2.prepareStatement("INSERT INTO Transcript(studentNo,sectionNo,courseName) VALUES(?,?,?)");
 			stmt.setString(1, ssn);
 			stmt.setInt(2,sectionNo);
 			stmt.setString(3, courseName);
@@ -183,15 +187,7 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 			}catch(SQLException e){
 				ex=e;
 			}finally{
-				if(conn!=null){
-					try{
-						conn.close();
-					}catch(SQLException e){
-						if(ex==null){
-							ex=e;
-						}
-					}
-				}
+				
 			if(ex!=null){
 				throw new RuntimeException(ex);
 			}
@@ -208,7 +204,7 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 		AllSectionsEnrolledStudents=new HashMap<Integer, HashMap<String, Student>>();
 		try{
 			for(int i=0;i<selects.length;i++){
-			stmt=conn.prepareStatement("SELECT studentNo FROM Transcript where sectionNo=?");
+			stmt=conn2.prepareStatement("SELECT studentNo FROM Transcript where sectionNo=?");
 			stmt.setInt(1, Integer.parseInt(selects[i]));
 			/*stmt.setString(2, admin.getCplace());*/
 			ResultSet rs=stmt.executeQuery();
@@ -224,15 +220,7 @@ public class TranscriptDAOImpl implements TranscriptDAO{
 			}catch(SQLException e){
 				ex=e;
 			}finally{
-				if(conn!=null){
-					try{
-						conn.close();
-					}catch(SQLException e){
-						if(ex==null){
-							ex=e;
-						}
-					}
-				}
+				
 			if(ex!=null){
 				throw new RuntimeException(ex);
 			}
