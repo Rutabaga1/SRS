@@ -37,6 +37,6 @@
 ### 成绩
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/TranscriptPage.PNG)
 ### 教师的已选课的学生
-![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/TranscriptPage.PNG)
+![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/enrolledStudents.PNG)
 ### 退出
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/SignOut.PNG)
