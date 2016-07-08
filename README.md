@@ -29,13 +29,13 @@
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/index.PNG)
 ### 选课
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/enrollCourses.PNG)
-### 教师的增删查改
-![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/teachers.PNG)
+### 成绩
+![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/TranscriptPage.PNG)
 ### 课程的增删查改
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/courses.PNG)
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/courses2.PNG)
-### 成绩
-![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/TranscriptPage.PNG)
+### 教师的增删查改
+![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/teachers.PNG)
 ### 教师的已选课的学生
 ![Page](https://github.com/Rutabaga1/SRS/blob/master/picture/enrolledStudents.PNG)
 ### 退出
